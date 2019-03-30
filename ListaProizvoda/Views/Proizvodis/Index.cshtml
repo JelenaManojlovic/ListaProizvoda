@@ -1,0 +1,75 @@
+﻿@model IEnumerable<ListaProizvoda.Models.Proizvodi>
+
+@{
+    ViewBag.Title = "Proizvodi";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Create new", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Naziv)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Opis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Proizvodjac)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dobavljac)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cena)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Naziv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Opis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Proizvodjac)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dobavljac)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cena)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+</table>
+
+@*<p>
+        <input type="submit" value="Click me" />
+    </p>*@
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        <div>
+            <input type="submit" value="Click here for Json File" class="btn btn-danger" />
+        </div>
+
+    </div>
+}
+
+
+
